@@ -68,6 +68,15 @@ pre[class*="language-"] {
     word-wrap: break-word;
 }
 
+.styled-font{
+  
+        font-family: "IM Fell Double Pica SC", serif;
+        font-weight: 400;
+        font-style: normal;
+      
+      
+}
+
 main>.container {
     padding: 60px 15px 0;
     margin-bottom: 5rem;
