@@ -24,7 +24,8 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top ">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html"><img src="img/8dRVCy-LogoMakr (1).png" alt="Kenny Ntozakhe Logo"
-                    class="d-line-block align-text-top" width="100" height=""><span class="styled-font">HONDERD</span></a>
+                    class="d-line-block align-text-top" width="100" height=""><span
+                    class="styled-font">HONDERD</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -60,17 +61,82 @@
                 <div class="col-lg-8 order-last order-lg-first">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            function HelloWorld(){
-                                alert("Hello World");
-                            }
+                            //get the values from the Page
+//starts or controller function
+function getValues() {
+    //get values from the page
+    let startValue = document.querySelector("#startValue").value;
+    let endValue = document.querySelector("#endValue").value;
+
+    //reset the values to interger
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    //we need to validate our input
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+        //call generateNumbers
+        let number = generateNumbers(startValue, endValue);
+
+        //call displayNumbers
+        displayNumbers(number);
+
+    } else {
+        alert('You must enter integers');
+    }
+
+}
+
+//generate numbers frm the start value to the end value
+//logic function
+function generateNumbers(startValue, endValue) {
+    let number = [];
+    //we want to get all numbers from start to end
+    for (let i = startValue; i <= endValue; i++) {
+        //this will execute in a loop until i === endValue
+        //
+        number.push(i);
+    }
+    return number;
+}
+
+//display the numbers and mark the even numbers bold
+//display or view function
+function displayNumbers(number) {
+    let templateRow = '';
+    let className = 'even';
+    for(let i=0; i < number.length;i++){
+        let num = number[i];
+        if(num%2==0){
+            className = 'even';
+        }else{
+            className = 'odd';
+        }
+        templateRow += `&lttr>&lttd class=${className}>${num}&lt/td>&lt/tr>`
+    }
+
+    document.querySelector('#results').innerHTML=templateRow;
+}
                             
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The Code is structured in one title</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays a message of "Hellow World"</p>
+                    <p>The Code is structured in <u>Three</u> function</p>
+                    <h5>getValues()</h5>
+                    <p>
+                        getValues accepts(gets) the user input from the page. It utilizes <strong>querySelector</strong> to pull the values from the page. It passes those values to the <strong>generateNumbers</strong> function. The function <strong>generateNumbers</strong> returns an array of values and passes that array to the <strong>displayNumbers</strong> function.
+                    </p>
+                    <h5>generateNumbers()</h5>
+                    <p>
+                        generateNumbers takes in two parameters, startValue and endValue. We create a variable (numbers) that holds an array. A for loop is used to generate all of the numbers between <strong>startValue</strong> and <strong>endValue</strong>.
+                    </p>
+                    <h5>displayNumbers()</h5>
+                    <p>
+                        displayNumbers takes in one parameter, <strong>number</strong>. The variable <strong>number</strong> is an array that holds values between <strong>startValue</strong> and <strong>endValue</strong>. We create a variable (className) that holds the name of a CSS class that we will use to bold the numbers. We create a variable <strong>templateRows</strong> that will hold the HTML we will write to the page.
+                    </p>
+                    <i>
+                        A for loop is used to check all of the numbers to see if they are even or odd. The remainder operator (%) is used to see if the number is divisable by two. If it returns a zero, it is even. If not (else) it is odd. The correct className is injected into the HTML row for display. Each interaction of the loop adds to the templateRows variable. At the end of the loop the resulting HTML rows are written to the page.
+                    </i>
                 </div>
             </div>
         </div>
